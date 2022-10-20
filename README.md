@@ -34,9 +34,7 @@ Things you may want to cover:
 | last_name          | string | null: false             |
 | first_name_kana    | string | null: false             |
 | last_name_kana     | string | null: false             |
-| birth_year         | integer| null: false             |
-| birth_month        | integer| null: false             |
-| birth_day          | integer| null: false             |
+| birth_day          | date   | null: false             |
 
 - has_many :items
 - has_many :orders
@@ -44,21 +42,21 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column     | Type      | Options                       |
-| ------     | ------    | ------------------------------|
-| name       | string    | null: false                   |
-| explanation| text      | null: false                   |
-| category   | string    | null: false                   |
-| user       | references| null: false, foreign_key: true|
-| situation  | string    | null: false                   |
-| load       | string    | null: false                   |
-| area       | string    | null: false                   |
-| days       | string    | null: false                   |
-| price      | integer   | null: false                   |
+| Column        | Type      | Options                       |
+| -----------   | ------    | ------------------------------|
+| name          | string    | null: false                   |
+| explanation   | text      | null: false                   |
+| category_id   | integer   | null: false                   |
+| user          | references| null: false, foreign_key: true|
+| situation_id  | integer   | null: false                   |
+| load_id       | integer   | null: false                   |
+| prefecture_id | integer   | null: false                   |
+|shipping_day_id| integer   | null: false                   |
+| price         | integer   | null: false                   |
 
 
 - belongs_to :user
-- has_many :orders
+- belongs_to :order
 
 
 
@@ -67,36 +65,23 @@ Things you may want to cover:
 | Column      | Type       | Options                        |
 | ------      | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
-| destination | references | null: false, foreign_key: true |
-| card        | references | null: false, foreign_key: true |
 | item        | references | null: false, foreign_key: true |
 
 - belongs_to :user
 - belongs_to :destination
-- belongs_to :card
 - belongs_to :item
 
 ## destinations テーブル
 
 
-| Column             | Type   | Options                 |
-| ------------------ | ------ | ------------------------|
-| code               | integer| null: false             |
-| prefecture         | string | null: false             |
-| city               | string | null: false             |
-| address            | string | null: false             |
-| building           | string |                         |
-| phone_number       | integer| null: false             |
-
-- has_many :orders
-
-## cards テーブル
-
-| Column             | Type   | Options                 |
-| ------------------ | ------ | ------------------------|
-| number             | integer| null: false             |
-| month              | integer| null: false             |
-| year               | integer| null: false             |
-| security           | integer| null: false             |
+| Column             | Type       | Options                       |
+| ------------------ | ---------- | ------------------------------|
+| code               | string     | null: false                   |
+| prefecture_id      | integer    | null: false                   |
+| city               | string     | null: false                   |
+| address            | string     | null: false                   |
+| building           | string     |                               |
+| phone_number       | string     | null: false                   |
+| order              | references | null: false,foreign_key: true |
 
 - has_many :orders
