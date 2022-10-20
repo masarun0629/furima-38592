@@ -56,7 +56,7 @@ Things you may want to cover:
 
 
 - belongs_to :user
-- belongs_to :order
+- has_one :order
 
 
 
@@ -68,7 +68,7 @@ Things you may want to cover:
 | item        | references | null: false, foreign_key: true |
 
 - belongs_to :user
-- belongs_to :destination
+- has_one :destination
 - belongs_to :item
 
 ## destinations テーブル
@@ -84,4 +84,4 @@ Things you may want to cover:
 | phone_number       | string     | null: false                   |
 | order              | references | null: false,foreign_key: true |
 
-- has_many :orders
+- belongs_to :order
