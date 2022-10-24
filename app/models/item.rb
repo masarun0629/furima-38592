@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
-  validates :name,:explanation,:price,presence: true
+  validates :image,:name,:explanation,presence: true
+  validates :price, inclusion: { in: 300..9_999_999 },format: { with: /\A[0-9]+\z/ }
   validates :category_id,:load_id,:prefecture_id,:shipping_day_id,:situation_id, numericality: { other_than: 0 ,message: "can't be blank"} 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
