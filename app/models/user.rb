@@ -16,3 +16,5 @@ with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/,allow_blank:
 end
   validates :birth_day, presence: true
 end
+
+has_many :items
