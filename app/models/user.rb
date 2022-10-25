@@ -15,4 +15,8 @@ with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/,allow_blank:
   validates :last_name_kana
 end
   validates :birth_day, presence: true
+  
+  has_many :items
 end
+
+
