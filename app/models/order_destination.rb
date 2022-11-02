@@ -1,8 +1,8 @@
 class OrderDestination
   include ActiveModel::Model
-  attr_accessor :user_id,:item_id,:code,:prefecture_id,:city,:address,:building,:phone_number
+  attr_accessor :user_id,:item_id,:code,:prefecture_id,:city,:address,:building,:phone_number,:token
   with_options presence: true do
-  validates :user_id,:item_id,:city,:address
+  validates :user_id,:item_id,:city,:address,:token
   end
   validates :code,presence: true, format: { with: /\A\d{3}[-]\d{4}\z/,allow_blank: true}
   validates :phone_number,presence: true, format: { with: /\A\d{10,11}\z/,allow_blank: true}

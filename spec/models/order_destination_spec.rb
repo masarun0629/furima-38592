@@ -10,7 +10,7 @@ RSpec.describe OrderDestination, type: :model do
   
     context '購入できる場合' do
       
-      it 'すべての値が正しく入力されていれば保存できること' do
+      it 'カードと届け先の値が正しく入力されていれば保存できること' do
         expect(@order_destination).to be_valid
       end
       
@@ -94,6 +94,12 @@ RSpec.describe OrderDestination, type: :model do
         expect(@order_destination.errors.full_messages).to include("Phone number is invalid")
       end
       
+      it "tokenが空では登録できない" do
+        @order_destination.token = nil
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("Token can't be blank")
+      end
+    
     end  
   end
 end 
