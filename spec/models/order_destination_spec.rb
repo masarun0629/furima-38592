@@ -100,6 +100,18 @@ RSpec.describe OrderDestination, type: :model do
         expect(@order_destination.errors.full_messages).to include("Token can't be blank")
       end
     
+      it 'userのIDが紐付いていないと登録できない' do
+        @order_destination.user_id = nil
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("User can't be blank")
+      end
+      
+      it 'itemのIDが紐付いていないと登録できない' do
+        @order_destination.item_id = nil
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("Item can't be blank")
+      end
+      
     end  
   end
 end 
